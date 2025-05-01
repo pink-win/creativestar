@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            * {
+                font-family: "Minecraft AE";
+                color: white;
+                margin: 0; /* 移除上下间距，以避免控件图片被挤压 */
+                padding: 0px 0; /* 添加上下内边距，避免元素压缩 */
+            }
+
+            @font-face {
+                font-family: "Minecraft AE";
+                src: url("assets/AE.TTF");
+            }
+            
+            body {
+                background-image: url("assets/dirt.webp");
+                /* 实现绝对居中 */
+                display: flex;
+                justify-content: center; /* 水平居中 */
+                align-items: center; /* 垂直居中 */
+                position: absolute; /* 使用绝对定位 */
+                top: 50%; /* 距离顶部50% */
+                left: 50%; /* 距离左侧50% */
+                transform: translate(-50%, -50%); /* 通过平移实现真正的居中 */
+                min-height: 100vh;
+                margin: 0;
+                padding: 20px; /* 添加内边距以避免控件重叠 */
+            }
+
+            button {
+                background-image: url("assets/normal.png");
+                width: 296px;
+                height: 58px;
+                background-size: cover;
+                margin-bottom: 20px; /* 添加底部间距以避免重叠 */
+                color: black;
+            }
+
+            button:hover {
+                background-image: url("assets/hover.png");
+                color: white;
+            }
+
+            button:active {
+                background-image: url("assets/press.png");
+                color: white; 
+            }
+
+            .switch {
+                position: relative;
+                display: inline-block;
+                width: 65px;
+                height: 34px;
+                margin-bottom: 20px; /* 添加底部间距以避免重叠 */
+                transform: translateY(10px);
+            }
+
+            .switch input {
+                display:none;
+            }
+
+            .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-image: url("assets/toggle_off.png");
+                background-size: 100% 100%;
+            }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 26px;
+                width: 26px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+                display: none;
+            }
+
+            .slider:hover {
+                background-image: url("assets/toggle_off_hover.png");
+            }
+
+            input:checked + .slider {
+                background-image: url("assets/toggle_on.png");
+            }
+
+            input:checked + .slider:hover {
+                background-image: url("assets/toggle_on_hover.png"); 
+            }
+
+            input:focus + .slider {
+                box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked + .slider:before {
+                -webkit-transform: translateX(26px);
+                -ms-transform: translateX(26px);
+                transform: translateX(26px);
+            }
+
+            /* Rounded sliders */
+            .slider.round {
+                border-radius: 34px;
+            }
+
+            .slider.round:before {
+                border-radius: 50%;
+            }
+
+            .notip {
+                position: relative;
+                left: -80px;
+                top: 50px;
+            }
+
+            .b {
+                display: block; 
+                margin-bottom: 20px; 
+                padding-bottom: 50px;
+            }
+    
+        </style>
+    </head>
+    <body>
+        <div style="text-align: center;">
+        <label class="b">线上游戏未分级</label>
+        <label class="b">线上游戏时，您可能会看到一些聊天消息或其他用户创作的内容，而这些内容可能并不适合所有年龄段。</p>
+        <div style="display: flex; align-items: center; height:100px; width: 200px" class="notip">
+            
+            <label class="switch" style="margin-right: 10px;" class="b">
+                
+                <input type="checkbox" style="margin-right: 10px;">
+                <div class="slider"></div>
+            </label>
+            <p>不再提示</p>
+        </div>
+        <div style="display: flex; align-items: center; margin-top: 200px; gap: 10px; margin-left: 40px;">
+            <button onclick="e2.function()">确定</button>
+            <button onclick="e1.function()">退出</button>
+        </div>
+        <script>
+            var e1 = {
+                function () {
+                    window.location.reload();
+                }
+            }
+
+            var e2 = {
+                function () {
+                    window.location.href = "minecraft://";
+                }
+            }
+        </script>
+    </body>
+</html>
